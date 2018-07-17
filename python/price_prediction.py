@@ -21,7 +21,7 @@ def runML():
 	url = 'http://ucanalytics.com/blogs/wp-content/uploads/2016/07/Regression-Analysis-Data.csv'
 	response = requests.get(url)
 	file_object = io.StringIO(response.content.decode('utf-8'))
-	#names = ['Observation', 'Dist_Taxi','Dist_Market','Dist_Hospital','Carpet','Builtup','Parking','City_Category','Rainfall','House_Price']
+	names = ['Observation', 'Dist_Taxi','Dist_Market','Dist_Hospital','Carpet','Builtup','Parking','City_Category','Rainfall','House_Price']
 	#dataset = pandas.read_csv(file_object, names=names)
 	dataset = pandas.read_csv(file_object)
 	le = preprocessing.LabelEncoder()
@@ -64,10 +64,10 @@ def runML():
 	# Make predictions on validation dataset
 	knn = KNeighborsClassifier()
 	knn.fit(X_train, Y_train)
-	#predictions = svc.predict(X_validation)
-	#print(accuracy_score(Y_validation, predictions))
-	#print(confusion_matrix(Y_validation, predictions))
-	#print(classification_report(Y_validation, predictions))
+	predictions = knn.predict(X_validation)
+	print(accuracy_score(Y_validation, predictions))
+	print(confusion_matrix(Y_validation, predictions))
+	print(classification_report(Y_validation, predictions))
 	
 
 	predictions = knn.predict(X_validation[0])   #this is for scikit 0.19  version issue fix 
